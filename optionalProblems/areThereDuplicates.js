@@ -31,7 +31,6 @@ function dupCollection() {
       ? collection[arguments[val]]++
       : (collection[arguments[val]] = 1);
   }
-  console.log(collection);
   for (let key in collection) {
     // here if any argument  in collection is greater than
     // 1 then it has a duplicate.
