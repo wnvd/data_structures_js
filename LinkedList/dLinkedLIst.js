@@ -27,6 +27,22 @@ class dLinkedList {
 		return this;
 	}
 
+	// remove node from the end
+	pop() {
+		if (!this.head) return undefined;
+		let removedNode = this.tail;
+		if (this.length === 1) {
+			this.head = null;
+			this.tail = null;
+		} else {
+			this.tail = removedNode.prev;
+			this.tail.nexl = null;
+			removedNode.prev = null;
+		}
+		this.length--;
+
+		return removedNode;
+	}
 	display() {
 		let trv = this.head;
 		while (trv) {
