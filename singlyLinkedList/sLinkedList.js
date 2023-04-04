@@ -39,10 +39,26 @@ class singlyLinkedList {
 		this.tail.next = null;
 		this.length--;
 
-		return;
+		return curr;
+	}
+
+	// display
+	display() {
+		let curr = this.head;
+		// till node exists keep traversing
+		while (curr) {
+			console.log(curr.data);
+			curr = curr.next;
+		}
+		console.log('----');
 	}
 }
 
 const list = new singlyLinkedList();
 list.push(1);
 list.push(2);
+list.push(3);
+list.push(4);
+list.display();
+list.pop();
+list.display();
