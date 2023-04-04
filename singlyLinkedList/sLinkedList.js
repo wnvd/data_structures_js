@@ -5,7 +5,7 @@ class Node {
 	}
 }
 
-class singlyLinkedList {
+class SinglyLinkedList {
 	constructor() {
 		this.head = null;
 		this.tail = null;
@@ -42,6 +42,19 @@ class singlyLinkedList {
 		return curr;
 	}
 
+	// removes node at the begining
+	shift() {
+		if (!this.head) return undefined;
+
+		let curr = this.head;
+		this.head = curr.next;
+		this.length--;
+		if (this.length === 0) {
+			this.tail = null;
+		}
+		return curr;
+	}
+
 	// display
 	display() {
 		let curr = this.head;
@@ -54,11 +67,13 @@ class singlyLinkedList {
 	}
 }
 
-const list = new singlyLinkedList();
+const list = new SinglyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
 list.display();
 list.pop();
+list.display();
+list.shift();
 list.display();
