@@ -55,6 +55,21 @@ class SinglyLinkedList {
 		return curr;
 	}
 
+	// adding a new node at the begining
+	unshift(data) {
+		let newNode = new Node(data);
+		if (!this.head) {
+			this.head = newNode;
+			this.tail = newNode;
+		} else {
+			newNode.next = this.head;
+			this.head = newNode;
+		}
+
+		this.length++;
+		return this;
+	}
+
 	// display
 	display() {
 		let curr = this.head;
@@ -76,4 +91,6 @@ list.display();
 list.pop();
 list.display();
 list.shift();
+list.display();
+list.unshift(0);
 list.display();
