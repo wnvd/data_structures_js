@@ -112,7 +112,7 @@ class dLinkedList {
 		return false;
 	}
 
-	// insert a value at a given index
+	// insert a node at a given index
 	insert(index, data) {
 		if (index < 0 || index > this.length - 1) return undefined;
 		if (index === 0) return this.unshift(data);
@@ -129,6 +129,25 @@ class dLinkedList {
 			return true;
 		}
 		return false;
+	}
+
+	// remove node at a given index
+	remove(index) {
+		if (index < 0 || index > this.length - 1) return undefined;
+		if (index === 0) return this.shift();
+		if (index === this.length - 1) return this.pop();
+
+		let fNode = this.get(index);
+		let pNode = fNode.prev;
+		let nNode = fNode.next;
+		if (fNode) {
+			pNode.next = nNode;
+			nNode.prev = pNode;
+			fNode.next = null;
+			fNode.prev = null;
+			this.length--;
+		}
+		return fNode;
 	}
 	display() {
 		let trv = this.head;
@@ -158,4 +177,6 @@ list.push(4);
 list.display();
 list.insert(1, 'x');
 list.insert(5, 'y');
+list.display();
+list.remove(1);
 list.display();
