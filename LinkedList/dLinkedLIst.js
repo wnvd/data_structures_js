@@ -51,14 +51,18 @@ class dLinkedList {
 		if (this.length === 1) {
 			this.head = null;
 			this.tail = null;
+		} else {
+			this.head = oldHead.next;
+			this.head.prev = null;
+			oldHead.next = null;
 		}
-		this.head = oldHead.next;
-		this.head.prev = null;
-		oldHead.next = null;
 		this.length--;
 
 		return oldHead;
 	}
+
+	// add node at the begining
+
 	display() {
 		let trv = this.head;
 		while (trv) {
