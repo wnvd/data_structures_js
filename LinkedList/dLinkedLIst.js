@@ -62,7 +62,20 @@ class dLinkedList {
 	}
 
 	// add node at the begining
+	unshift(data) {
+		let newHead = new Node(data);
+		if (!this.head) {
+			this.head = newHead;
+			this.tail = newHead;
+		} else {
+			newHead.next = this.head;
+			this.head.prev = newHead;
+			this.head = newHead;
+		}
+		this.length++;
 
+		return this;
+	}
 	display() {
 		let trv = this.head;
 		while (trv) {
@@ -80,4 +93,6 @@ list.push(2);
 list.push(3);
 list.display();
 list.shift();
+list.display();
+list.unshift(0);
 list.display();
