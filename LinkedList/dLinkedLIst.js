@@ -80,25 +80,25 @@ class dLinkedList {
 	// get node a given index
 	get(index) {
 		if (index < 0 || index > this.length - 1) return undefined;
-		let node;
+		let node, count;
 		let mid = Math.floor((this.length - 1) / 2);
 		if (index < mid) {
 			node = this.head;
-			let count = 0;
+			count = 0;
 			while (count != index) {
 				node = node.next;
 				count++;
 			}
 		} else {
 			node = this.tail;
-			let count = this.length - 1;
+			count = this.length - 1;
 			while (count != index) {
 				node = node.prev;
 				count--;
 			}
 			console.log(node.data);
-			return node;
 		}
+		return node;
 	}
 
 	display() {
