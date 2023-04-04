@@ -89,6 +89,7 @@ class dLinkedList {
 				node = node.next;
 				count++;
 			}
+			// console.log(node.data);
 		} else {
 			node = this.tail;
 			count = this.length - 1;
@@ -96,9 +97,19 @@ class dLinkedList {
 				node = node.prev;
 				count--;
 			}
-			console.log(node.data);
+			// console.log(node.data);
 		}
 		return node;
+	}
+
+	// set node value at the given index
+	set(index, data) {
+		let nodeReturned = this.get(index);
+		if (nodeReturned) {
+			nodeReturned.data = data;
+			return true;
+		}
+		return false;
 	}
 
 	display() {
@@ -116,10 +127,14 @@ list.push(0);
 list.push(1);
 list.push(2);
 list.push(3);
+list.push(4);
+// list.display();
+// list.shift();
+// list.display();
+// list.unshift(0);
+// list.display();
+// list.get(1);
+// list.get(2);
+// list.display();
+list.set(0, 'updated');
 list.display();
-list.shift();
-list.display();
-list.unshift(0);
-list.display();
-list.get(1);
-list.get(2);
