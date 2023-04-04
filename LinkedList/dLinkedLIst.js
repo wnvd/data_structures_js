@@ -43,12 +43,29 @@ class dLinkedList {
 
 		return removedNode;
 	}
+
+	// remove node at the begining
+	shift() {
+		if (!this.head) return undefined;
+		let oldHead = this.head;
+		if (this.length === 1) {
+			this.head = null;
+			this.tail = null;
+		}
+		this.head = oldHead.next;
+		this.head.prev = null;
+		oldHead.next = null;
+		this.length--;
+
+		return oldHead;
+	}
 	display() {
 		let trv = this.head;
 		while (trv) {
 			console.log(trv.data);
 			trv = trv.next;
 		}
+		console.log('---');
 	}
 }
 
@@ -57,4 +74,6 @@ list.push(0);
 list.push(1);
 list.push(2);
 list.push(3);
+list.display();
+list.shift();
 list.display();
