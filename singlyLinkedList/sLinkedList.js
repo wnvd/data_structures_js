@@ -110,6 +110,20 @@ class SinglyLinkedList {
 
 		return true;
 	}
+
+	// remove node to given index
+	remove(index) {
+		if (index < 0 || index > this.length) return null;
+		if (index === this.length - 1) return this.pop();
+		if (index === 0) return this.shift();
+
+		let nodeBefore = this.get(index - 1);
+		let removeNode = nodeBefore.next;
+		nodeBefore.next = removeNode.next;
+		this.length--;
+
+		return removeNode;
+	}
 	// display
 	display() {
 		let curr = this.head;
@@ -138,4 +152,6 @@ list.push(4);
 list.set(3, 'data changed');
 list.display();
 list.insert(2, 'inserted node');
+list.display();
+list.remove(2);
 list.display();
