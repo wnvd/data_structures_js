@@ -112,6 +112,24 @@ class dLinkedList {
 		return false;
 	}
 
+	// insert a value at a given index
+	insert(index, data) {
+		if (index < 0 || index > this.length - 1) return undefined;
+		if (index === 0) return this.unshift(data);
+
+		let curr = this.get(index);
+		let newNode = new Node(data);
+		if (curr) {
+			newNode.next = curr;
+			newNode.prev = curr.prev;
+			curr.prev.next = newNode;
+			curr.prev = newNode;
+
+			this.length++;
+			return true;
+		}
+		return false;
+	}
 	display() {
 		let trv = this.head;
 		while (trv) {
@@ -136,5 +154,8 @@ list.push(4);
 // list.get(1);
 // list.get(2);
 // list.display();
-list.set(0, 'updated');
+// list.set(0, 'updated');
+list.display();
+list.insert(1, 'x');
+list.insert(5, 'y');
 list.display();
