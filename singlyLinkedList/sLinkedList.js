@@ -70,6 +70,31 @@ class SinglyLinkedList {
 		return this;
 	}
 
+	// getting item at the given index
+	get(index) {
+		if (index < 0 || index > this.length - 1) return undefined;
+		let count = 0;
+		let trvNode = this.head;
+		while (count !== index) {
+			trvNode = trvNode.next;
+			count++;
+		}
+		// to dispay node data
+		console.log(trvNode.data);
+		return trvNode;
+	}
+
+	// changing value at given index
+	set(index, data) {
+		if (index < 0 || index >= this.length) return undefined;
+		// getting node frem get function
+		let newNode = this.get(index);
+		if (newNode) {
+			newNode.data = data;
+			return true;
+		}
+		return false;
+	}
 	// display
 	display() {
 		let curr = this.head;
@@ -87,10 +112,13 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
-list.display();
-list.pop();
-list.display();
-list.shift();
-list.display();
-list.unshift(0);
+// list.display();
+// list.pop();
+// list.display();
+// list.shift();
+// list.display();
+// list.unshift(0);
+// list.display();
+list.get(3);
+list.set(3, 'data changed');
 list.display();
