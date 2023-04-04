@@ -124,6 +124,22 @@ class SinglyLinkedList {
 
 		return removeNode;
 	}
+
+	// Reverse node
+	reverse() {
+		let curr = this.head;
+		this.head = this.tail;
+		this.tail = curr;
+		let next = null;
+		let prev = null;
+		for (let i = 0; i < this.length; i++) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		return this;
+	}
 	// display
 	display() {
 		let curr = this.head;
@@ -149,9 +165,11 @@ list.push(4);
 // list.unshift(0);
 // list.display();
 // list.get(3);
-list.set(3, 'data changed');
+// list.set(3, 'data changed');
+// list.display();
+// list.insert(2, 'inserted node');
+// list.display();
+// list.remove(2);
 list.display();
-list.insert(2, 'inserted node');
-list.display();
-list.remove(2);
+list.reverse();
 list.display();
