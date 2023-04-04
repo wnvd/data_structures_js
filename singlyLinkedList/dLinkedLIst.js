@@ -26,6 +26,14 @@ class dLinkedList {
 
 		return this;
 	}
+
+	display() {
+		let trv = this.head;
+		while (trv) {
+			console.log(trv.data);
+			trv = trv.next;
+		}
+	}
 }
 
 const list = new dLinkedList();
@@ -33,3 +41,4 @@ list.push(0);
 list.push(1);
 list.push(2);
 list.push(3);
+list.display();
