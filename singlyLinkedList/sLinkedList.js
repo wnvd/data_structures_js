@@ -20,10 +20,26 @@ class singlyLinkedList {
 			this.tail = curr;
 		} else {
 			this.tail.next = curr;
-			curr = this.tail;
+			this.tail = curr;
 		}
 		this.length++;
 		return this;
+	}
+
+	// remove last node
+	pop() {
+		if (!this.head) return undefined;
+		let curr = this.head;
+		let newTail = curr;
+		while (curr.next) {
+			newTail = curr;
+			curr = curr.next;
+		}
+		this.tail = newTail;
+		this.tail.next = null;
+		this.length--;
+
+		return;
 	}
 }
 
