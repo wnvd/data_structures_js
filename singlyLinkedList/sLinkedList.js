@@ -80,7 +80,7 @@ class SinglyLinkedList {
 			count++;
 		}
 		// to dispay node data
-		console.log(trvNode.data);
+		// console.log(trvNode.data);
 		return trvNode;
 	}
 
@@ -94,6 +94,21 @@ class SinglyLinkedList {
 			return true;
 		}
 		return false;
+	}
+
+	// insert node at a given position
+	insert(index, value) {
+		if (index < 0 || index > this.length) return undefined;
+		if (index === this.length) return this.push(value);
+		if (index == 0) return this.unshift(value);
+
+		let nodeToInsert = new Node(value);
+		let pre = this.get(index - 1);
+		nodeToInsert.next = pre.next;
+		pre.next = nodeToInsert;
+		this.length++;
+
+		return true;
 	}
 	// display
 	display() {
@@ -119,6 +134,8 @@ list.push(4);
 // list.display();
 // list.unshift(0);
 // list.display();
-list.get(3);
+// list.get(3);
 list.set(3, 'data changed');
+list.display();
+list.insert(2, 'inserted node');
 list.display();
