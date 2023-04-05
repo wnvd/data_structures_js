@@ -1,6 +1,6 @@
 // stack using class
 class Node {
-	contructor(value) {
+	constructor(value) {
 		this.value = value;
 		this.next = null;
 	}
@@ -13,11 +13,30 @@ class Stack {
 	}
 
 	push(value) {
+		let newNode = new Node(value);
 		if (this.size === 0) {
-			let newNode = new Node(value);
 			this.first = newNode;
 			this.last = newNode;
-			this.size++;
+		} else {
+			this.last.next = newNode;
+			this.last = newNode;
 		}
+		this.size++;
+		return newNode;
+	}
+
+	display() {
+		let curr = this.first;
+		while (curr) {
+			console.log(curr.value);
+			curr = curr.next;
+		}
+		console.log('...');
 	}
 }
+
+let newStack = new Stack();
+newStack.push(1);
+newStack.push(2);
+newStack.push(3);
+newStack.display();
