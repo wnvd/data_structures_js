@@ -26,6 +26,19 @@ class Stack {
 		return newNode;
 	}
 
+	//  remove last node and return that node
+	pop() {
+		if (!this.first) return null;
+		let popNode = this.first;
+		if (this.size === 0) {
+			this.first = null;
+			this.last = null;
+		}
+		this.first = popNode.prev;
+		popNode.prev = null;
+		this.size--;
+		return popNode;
+	}
 	display() {
 		let curr = this.first;
 		while (curr) {
@@ -42,4 +55,6 @@ let newStack = new Stack();
 newStack.push(1);
 newStack.push(2);
 newStack.push(3);
+newStack.display();
+newStack.pop();
 newStack.display();
