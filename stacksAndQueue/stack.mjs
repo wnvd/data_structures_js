@@ -2,7 +2,7 @@
 class Node {
 	constructor(value) {
 		this.value = value;
-		this.next = null;
+		this.prev = null;
 	}
 }
 class Stack {
@@ -18,8 +18,9 @@ class Stack {
 			this.first = newNode;
 			this.last = newNode;
 		} else {
-			this.last.next = newNode;
-			this.last = newNode;
+			let temp = this.first;
+			this.first = newNode;
+			this.first.prev = temp;
 		}
 		this.size++;
 		return newNode;
@@ -29,9 +30,11 @@ class Stack {
 		let curr = this.first;
 		while (curr) {
 			console.log(curr.value);
-			curr = curr.next;
+			curr = curr.prev;
 		}
+
 		console.log('...');
+		console.log(`peek: ${this.first.value}`);
 	}
 }
 
