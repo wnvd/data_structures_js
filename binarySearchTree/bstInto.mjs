@@ -19,16 +19,16 @@ class BinarySearchTree {
 			let curr = this.root;
 			while (true) {
 				// for duplicated
-				if (value === curr.value) return undefined;
+				if (data === curr.data) return undefined;
 
-				if (value < curr.value) {
-					if (curr.lef === null) {
+				if (data < curr.data) {
+					if (curr.left === null) {
 						curr.left = newNode;
 						return this;
 					} else {
 						curr = curr.left;
 					}
-				} else if (value > curr.value) {
+				} else if (data > curr.value) {
 					if (curr.right === null) {
 						curr.right = newNode;
 						return this;
@@ -38,5 +38,23 @@ class BinarySearchTree {
 				}
 			}
 		}
+	}
+
+	contains(data) {
+		if (!this.root) {
+			return false;
+		}
+		let curr = this.root,
+			found = false;
+		while (curr && !found) {
+			if (data < curr.data) {
+				curr = curr.left;
+			} else if (data > curr.data) {
+				curr = curr.right;
+			} else {
+				return true;
+			}
+		}
+		return false;
 	}
 }
