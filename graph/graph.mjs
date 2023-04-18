@@ -38,3 +38,20 @@ g.addEdge('Tokyo', 'Kyoto');
 // g.removeEdge('Tokyo', 'Kyoto');
 g.removeVertex('Tokyo');
 g.display();
+
+// tree traverse
+const g2 = new Graph();
+g2.addVertex("A");
+g2.addVertex("B");
+g2.addVertex("C");
+g2.addVertex("D");
+g2.addVertex("E");
+g2.addVertex("F");
+
+g2.addEdge("A", "B");
+g2.addEdge("A", "C");
+g2.addEdge("B", "D");
+g2.addEdge("C", "E");
+g2.addEdge("D", "E");
+g2.addEdge("D", "F");
+g2.addEdge("E", "F");
