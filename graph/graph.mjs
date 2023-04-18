@@ -45,6 +45,27 @@ class Graph {
 		console.log(result);	
 		return result;
 	}
+	
+	depthFirstInterative(start){
+		const stack = [start];
+		const result = [];
+		const visited = {};
+		let currentVertex;
+		visited[start] = true;
+		while(stack.length > 0){
+			currentVertex = stack.pop();
+			result.push(currentVertex);
+			
+			this.adjacencyList[currentVertex].forEach(neighbour =>{
+				if(!visited[neighbour]){
+					visited[neighbour] = true;
+					stack.push(neighbour);
+				}
+			});
+		}
+		console.log(result);
+		return result;
+	}
 	display() {
 		console.log(this.adjacencyList);
 	}
@@ -75,3 +96,4 @@ g2.addEdge("D", "E");
 g2.addEdge("D", "F");
 g2.addEdge("E", "F");
 g2.depthFirstRecursive("A");
+g2.depthFirstInterative("A");
