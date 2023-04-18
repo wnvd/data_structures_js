@@ -26,6 +26,25 @@ class Graph {
         }
         delete this.adjacencyList[vertex];
 	}
+
+	depthFirstRecursive(start){
+		const result = [];
+		const visited = {};
+		
+		const adjacencyList = this.adjacencyList;
+		(function dfsHelper(vertex){
+			if(!vertex) return null;
+			visited[vertex] = true;
+			result.push(vertex);
+			adjacencyList[vertex].forEach(neighbour =>{
+				if(!visited[neighbour]){
+					return dfsHelper(neighbour);
+				}
+			})
+		})(start)
+		console.log(result);	
+		return result;
+	}
 	display() {
 		console.log(this.adjacencyList);
 	}
@@ -55,3 +74,4 @@ g2.addEdge("C", "E");
 g2.addEdge("D", "E");
 g2.addEdge("D", "F");
 g2.addEdge("E", "F");
+g2.depthFirstRecursive("A");
